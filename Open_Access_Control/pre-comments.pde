@@ -111,8 +111,8 @@ void setup(){ // Runs once at Arduino boot-up
 	 */
 	pcattach.PCattachInterrupt(reader1Pins[0], callReader1Zero, CHANGE);
 	pcattach.PCattachInterrupt(reader1Pins[1], callReader1One, CHANGE);
-	//	pcattach.PCattachInterrupt(reader2Pins[0], callReader2Zero, CHANGE);
-	//	pcattach.PCattachInterrupt(reader2Pins[1], callReader2One, CHANGE);
+	pcattach.PCattachInterrupt(reader2Pins[0], callReader2Zero, CHANGE);
+	pcattach.PCattachInterrupt(reader2Pins[1], callReader2One, CHANGE);
 
 
 	//Clear and initialize readers
@@ -151,13 +151,6 @@ void loop() // Main branch, runs over and over again
 	//////////////////////////
 	// Normal operation section
 	//////////////////////////
-
-	// test //
-	if (reader1 == 0) {
-		Serial.println("waiting...");
-		delay(500); }
-	else
-		Serial.println(reader1);
 
 	// Cat 1 //
 	if (cat1 && relay1high) {
@@ -290,7 +283,7 @@ void relayLow(int input) { //Send an unlock signal to the door and flash the Doo
  */
 void callReader1Zero(){wiegand26.reader1Zero();}
 void callReader1One(){wiegand26.reader1One();}
-//void callReader2Zero(){wiegand26.reader2Zero();}
-//void callReader2One(){wiegand26.reader2One();}
+void callReader2Zero(){wiegand26.reader2Zero();}
+void callReader2One(){wiegand26.reader2One();}
 //void callReader3Zero(){wiegand26.reader3Zero();}
 //void callReader3One(){wiegand26.reader3One();}
